@@ -318,45 +318,6 @@ document.querySelectorAll(".btn").forEach(btn => {
 
 
 /* ==========================
-   PORTFOLIO FILTER TABS
-========================== */
-
-const pfTabs  = document.querySelectorAll(".pf-tab");
-const csCards = document.querySelectorAll(".cs-card");
-
-pfTabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-        // Update active tab
-        pfTabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
-
-        const filter = tab.dataset.filter;
-
-        csCards.forEach(card => {
-            const match = filter === "all" || card.dataset.category === filter;
-            card.style.transition = "opacity .3s ease, transform .3s ease";
-
-            if (match) {
-                card.style.opacity   = "1";
-                card.style.transform = "";
-                card.style.display   = "";
-            } else {
-                card.style.opacity   = "0";
-                card.style.transform = "translateY(8px)";
-                // Hide after fade
-                setTimeout(() => {
-                    if (tab.classList.contains("active") && tab.dataset.filter !== "all") {
-                        if (!card.matches(`[data-category="${tab.dataset.filter}"]`)) {
-                            card.style.display = "none";
-                        }
-                    }
-                }, 300);
-            }
-        });
-    });
-});
-
-/* ==========================
    YEAR AUTO-UPDATE
 ========================== */
 

@@ -800,471 +800,53 @@ section { padding: 96px var(--gutter); }
 }
 
 /* ============================================================
-   PORTFOLIO — Case Study System
+   PORTFOLIO
    ============================================================ */
 #portfolio { background: var(--bg); }
 
-/* Sub-header paragraph */
-.section-sub {
-  font-size: 15px;
-  color: var(--muted);
-  max-width: 540px;
-  line-height: 1.72;
-  margin-top: 4px;
-}
-
-/* ── Filter tabs ── */
-.pf-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 40px;
-}
-
-.pf-tab {
-  padding: 8px 18px;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 99px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--muted);
-  cursor: pointer;
-  transition: all var(--dur) var(--ease);
-}
-
-.pf-tab:hover {
-  border-color: var(--brand);
-  color: var(--brand);
-}
-
-.pf-tab.active {
-  background: var(--brand);
-  border-color: var(--brand);
-  color: #fff;
-}
-
-/* ── Case study list ── */
-.cs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-/* ── Individual case study card ── */
-.cs-card {
+.portfolio-grid {
   display: grid;
-  grid-template-columns: 380px 1fr;
-  gap: 0;
-  background: var(--surface);
-  border: 1px solid var(--border);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+}
+
+.project {
   border-radius: var(--r-xl);
   overflow: hidden;
-  transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
-}
-
-.cs-card:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(15,122,224,.2);
-  transform: translateY(-3px);
-}
-
-/* Featured (real project) card — slightly elevated look */
-.cs-card.cs-featured {
-  border-color: rgba(0,200,150,.25);
-  box-shadow: 0 0 0 1px rgba(0,200,150,.08), var(--shadow-sm);
-}
-
-.cs-card.cs-featured:hover {
-  border-color: rgba(0,200,150,.4);
-  box-shadow: 0 0 0 1px rgba(0,200,150,.12), var(--shadow-lg);
-}
-
-/* ── Left column: image + stack ── */
-.cs-image-col {
-  display: flex;
-  flex-direction: column;
-  border-right: 1px solid var(--border);
-}
-
-/* Thumbnail */
-.cs-thumb {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: all var(--dur) var(--ease);
   position: relative;
-  flex: 1;
-  overflow: hidden;
-  background: var(--ink);
-  min-height: 220px;
 }
 
-.cs-thumb img {
+.project:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+
+.project img {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
   transition: transform .5s var(--ease);
 }
 
-.cs-card:hover .cs-thumb img { transform: scale(1.04); }
+.project:hover img { transform: scale(1.05); }
 
-/* Hover overlay with "open site" button */
-.cs-thumb-overlay {
+.overlay {
   position: absolute;
   inset: 0;
-  background: rgba(13,17,23,.55);
+  background: linear-gradient(to bottom, transparent 40%, rgba(13,17,23,.92));
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 22px;
   opacity: 0;
   transition: opacity var(--dur) var(--ease);
-  backdrop-filter: blur(2px);
 }
 
-.cs-card:hover .cs-thumb-overlay { opacity: 1; }
+.project:hover .overlay { opacity: 1; }
 
-.cs-preview-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 10px 20px;
-  background: #fff;
-  color: var(--ink);
-  border-radius: 99px;
-  font-size: 13px;
-  font-weight: 700;
-  transition: transform var(--dur) var(--ease);
-}
-
-.cs-preview-btn:hover { transform: scale(1.05); }
-
-/* ── Placeholder mockup (for cards without screenshots) ── */
-.cs-placeholder-thumb {
-  background: linear-gradient(145deg, var(--ph-color-a, #0D1117), var(--ph-color-b, #1a2744));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  gap: 16px;
-}
-
-.cs-ph-mockup { width: 100%; max-width: 240px; }
-
-/* Mini browser frame inside placeholder */
-.ph-browser {
-  background: #1e2530;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 8px 24px rgba(0,0,0,.4);
-}
-
-.ph-bar {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  padding: 7px 10px;
-  background: #161b22;
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-
-.ph-bar span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.15);
-}
-
-.ph-bar span:nth-child(1) { background: rgba(255,95,86,.5); }
-.ph-bar span:nth-child(2) { background: rgba(255,189,46,.5); }
-.ph-bar span:nth-child(3) { background: rgba(39,201,63,.5); }
-
-.ph-hero-band {
-  height: 36px;
-  background: rgba(15,122,224,.12);
-  border-bottom: 1px solid rgba(255,255,255,.04);
-}
-
-.ph-body {
-  padding: 12px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.ph-line {
-  height: 6px;
-  border-radius: 3px;
-  background: rgba(255,255,255,.1);
-}
-.ph-line.long   { width: 90%; }
-.ph-line.medium { width: 65%; }
-.ph-line.short  { width: 40%; }
-
-.ph-btn-row {
-  display: flex;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.ph-btn-block {
-  height: 14px;
-  width: 52px;
-  border-radius: 3px;
-  background: rgba(15,122,224,.4);
-}
-
-.ph-btn-ghost {
-  height: 14px;
-  width: 44px;
-  border-radius: 3px;
-  border: 1px solid rgba(255,255,255,.15);
-}
-
-.ph-cards {
-  display: flex;
-  gap: 5px;
-  margin-top: 4px;
-}
-
-.ph-mini-card {
-  flex: 1;
-  height: 24px;
-  border-radius: 4px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.05);
-}
-
-.ph-table { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
-
-.ph-table-row {
-  height: 10px;
-  border-radius: 3px;
-  background: rgba(255,255,255,.06);
-}
-
-.ph-table-row.header { background: rgba(15,122,224,.2); }
-
-/* "Coming soon" label */
-.cs-ph-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-}
-
-/* ── Tech stack chips ── */
-.cs-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  padding: 14px 16px;
-  border-top: 1px solid var(--border);
-  background: var(--bg);
-}
-
-.stack-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 10px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 99px;
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.stack-chip i { font-size: 12px; }
-
-/* ── Right column: case study detail ── */
-.cs-detail-col {
-  padding: 32px 36px 32px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-/* Meta row: badge + type label */
-.cs-meta-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-
-/* "Live Project" badge */
-.cs-type-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: 99px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-.cs-real {
-  background: rgba(0,200,150,.1);
-  border: 1px solid rgba(0,200,150,.3);
-  color: var(--accent);
-}
-
-.cs-wip {
-  background: rgba(255,107,53,.08);
-  border: 1px solid rgba(255,107,53,.25);
-  color: var(--warm);
-}
-
-.cs-type-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--faint);
-  letter-spacing: .04em;
-  text-transform: uppercase;
-}
-
-/* Card title + tagline */
-.cs-title {
-  font-size: clamp(18px, 2.4vw, 24px);
-  font-weight: 800;
-  letter-spacing: -.03em;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.15;
-}
-
-.cs-tagline {
-  font-size: 14.5px;
-  color: var(--muted);
-  line-height: 1.65;
-  margin-bottom: 22px;
-}
-
-/* Problem / Solution blocks */
-.cs-block { margin-bottom: 16px; }
-
-.cs-block-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: 5px;
-}
-
-.cs-block p {
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.72;
-}
-
-/* Outcomes list */
-.cs-outcomes {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  margin: 4px 0 24px;
-  padding: 16px;
-  background: var(--bg);
-  border-radius: var(--r-md);
-  border: 1px solid var(--border);
-}
-
-.cs-outcome {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.co-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  background: rgba(0,200,150,.1);
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.co-text {
-  font-size: 13.5px;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-/* CTA row */
-.cs-cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: auto;
-  padding-top: 4px;
-}
-
-/* Disabled button for placeholders */
-.btn-disabled {
-  opacity: .55;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* ── Portfolio section footer ── */
-.portfolio-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 48px;
-  padding-top: 48px;
-  border-top: 1px solid var(--border);
-}
-
-.portfolio-footer p {
-  font-size: 16px;
-  color: var(--muted);
-  font-weight: 500;
-}
-
-/* ── Responsive: portfolio ── */
-@media (max-width: 960px) {
-  .cs-card {
-    grid-template-columns: 1fr;
-  }
-
-  .cs-image-col {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    flex-direction: row;
-  }
-
-  .cs-thumb { min-height: 200px; flex: 1; }
-
-  .cs-stack {
-    width: 200px;
-    flex-direction: column;
-    border-top: none;
-    border-left: 1px solid var(--border);
-    padding: 12px;
-  }
-
-  .cs-detail-col { padding: 24px; }
-}
-
-@media (max-width: 640px) {
-  .cs-image-col { flex-direction: column; }
-  .cs-stack { width: 100%; flex-direction: row; border-left: none; border-top: 1px solid var(--border); }
-  .cs-detail-col { padding: 20px 18px; }
-  .cs-title { font-size: 18px; }
-}
+.overlay h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.overlay p  { font-size: 13px; color: rgba(255,255,255,.65); }
 
 /* ============================================================
    PRICING
@@ -1684,4 +1266,70 @@ footer {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
+}
+
+
+
+/* ============================================================
+   Credit Badge
+   ============================================================ */
+
+.developer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 18px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  transition: all 0.3s ease;
+}
+
+.developer-badge:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.developer-logo {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #ff8c42,
+    #ff6b00
+  );
+
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.developer-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.developer-name {
+  color: #ff8c42;
+  font-weight: 700;
 }

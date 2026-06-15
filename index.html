@@ -299,36 +299,351 @@
     <section id="portfolio">
 
         <div class="section-header">
-            <div class="section-tag">Portfolio</div>
+            <div class="section-tag">Client Work</div>
             <h2>Featured Projects</h2>
+            <p class="section-sub">Real problems solved. Real results delivered. Each project below is a case study, not just a screenshot.</p>
         </div>
 
-        <div class="portfolio-grid">
+        <!-- ── PROJECT FILTER TABS ───────────────────────────── -->
+        <div class="pf-tabs" role="tablist">
+            <button class="pf-tab active" data-filter="all">All Projects</button>
+            <button class="pf-tab" data-filter="website">Business Websites</button>
+            <button class="pf-tab" data-filter="webapp">Web Apps</button>
+            <button class="pf-tab" data-filter="landing">Landing Pages</button>
+        </div>
 
-            <div class="project">
-                <img src="https://picsum.photos/600/400?1" alt="Restaurant Website Project">
-                <div class="overlay">
-                    <h3>Restaurant Website</h3>
-                    <p>Modern food business website with online menu.</p>
+        <!-- ── CASE STUDY LIST ──────────────────────────────── -->
+        <div class="cs-list">
+
+            <!-- ── 1. THE HEAVEN PALACE (REAL) ──────────────── -->
+            <article class="cs-card cs-featured" data-category="website">
+
+                <div class="cs-image-col">
+                    <div class="cs-thumb">
+                        <!-- Live screenshot via microlink.io embed -->
+                        <img
+                            src="https://api.microlink.io/?url=https%3A%2F%2Ftheheavenpalace.netlify.app%2F&screenshot=true&meta=false&embed=screenshot.url"
+                            alt="The Heaven Palace Restaurant Website screenshot"
+                            loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80';this.onerror=null">
+                        <div class="cs-thumb-overlay">
+                            <a href="https://theheavenpalace.netlify.app/" target="_blank" rel="noopener" class="cs-preview-btn">
+                                <i class="fas fa-external-link-alt"></i> Open Live Site
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Tech stack chips under image -->
+                    <div class="cs-stack">
+                        <span class="stack-chip"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="stack-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="stack-chip"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="stack-chip"><i class="fas fa-cloud"></i> Netlify</span>
+                    </div>
                 </div>
-            </div>
 
-            <div class="project">
-                <img src="https://picsum.photos/600/400?2" alt="Gym Landing Page Project">
-                <div class="overlay">
-                    <h3>Gym Landing Page</h3>
-                    <p>Lead generation website with membership form.</p>
+                <div class="cs-detail-col">
+
+                    <div class="cs-meta-row">
+                        <span class="cs-type-badge cs-real">
+                            <i class="fas fa-circle-check"></i> Live Project
+                        </span>
+                        <span class="cs-type-label">Restaurant Website</span>
+                    </div>
+
+                    <h3 class="cs-title">The Heaven Palace</h3>
+                    <p class="cs-tagline">A premium restaurant website that turns online visitors into walk-in customers.</p>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">The Problem</div>
+                        <p>The restaurant had no online presence. Potential customers searching for dining options in the area couldn't find them, and there was no way to showcase their menu, ambience, or contact details digitally.</p>
+                    </div>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">My Solution</div>
+                        <p>Designed and built a modern, mobile-first restaurant website from scratch — complete with an elegant UI, full menu section, gallery, customer testimonials, and a contact section to drive footfall and enquiries.</p>
+                    </div>
+
+                    <div class="cs-outcomes">
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-mobile-alt"></i></span>
+                            <span class="co-text">100% mobile responsive across all devices</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-bolt"></i></span>
+                            <span class="co-text">Fast load times with optimised assets</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-star"></i></span>
+                            <span class="co-text">Premium design matching the restaurant's brand</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-cta-row">
+                        <a href="https://theheavenpalace.netlify.app/" target="_blank" rel="noopener" class="btn primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="#contact" class="btn secondary cs-inquire">
+                            <i class="fas fa-paper-plane"></i> Similar Project?
+                        </a>
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="project">
-                <img src="https://picsum.photos/600/400?3" alt="Medical Clinic Project">
-                <div class="overlay">
-                    <h3>Medical Clinic</h3>
-                    <p>Appointment booking website with Spring Boot backend.</p>
+            </article>
+
+            <!-- ── 2. GYM / FITNESS (PLACEHOLDER) ───────────── -->
+            <article class="cs-card" data-category="landing">
+
+                <div class="cs-image-col">
+                    <div class="cs-thumb cs-placeholder-thumb" style="--ph-color-a:#1a2744;--ph-color-b:#0F7AE0">
+                        <div class="cs-ph-mockup">
+                            <div class="ph-browser">
+                                <div class="ph-bar"><span></span><span></span><span></span></div>
+                                <div class="ph-hero-band"></div>
+                                <div class="ph-body">
+                                    <div class="ph-line long"></div>
+                                    <div class="ph-line medium"></div>
+                                    <div class="ph-btn-row"><div class="ph-btn-block"></div><div class="ph-btn-ghost"></div></div>
+                                    <div class="ph-cards">
+                                        <div class="ph-mini-card"></div>
+                                        <div class="ph-mini-card"></div>
+                                        <div class="ph-mini-card"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cs-ph-label">Coming Soon</div>
+                    </div>
+
+                    <div class="cs-stack">
+                        <span class="stack-chip"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="stack-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="stack-chip"><i class="fab fa-js"></i> JavaScript</span>
+                    </div>
                 </div>
-            </div>
 
+                <div class="cs-detail-col">
+
+                    <div class="cs-meta-row">
+                        <span class="cs-type-badge cs-wip">
+                            <i class="fas fa-clock"></i> In Progress
+                        </span>
+                        <span class="cs-type-label">Fitness Landing Page</span>
+                    </div>
+
+                    <h3 class="cs-title">FitForge Gym</h3>
+                    <p class="cs-tagline">A high-converting membership landing page built for a local fitness studio.</p>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">The Problem</div>
+                        <p>The gym was spending money on Instagram ads but had no proper landing page. Potential members clicked the ad link and saw a generic Facebook page — with no clear way to sign up or enquire.</p>
+                    </div>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">My Solution</div>
+                        <p>Built a focused, distraction-free landing page with a membership enquiry form, pricing tiers, trainer bios, transformation testimonials, and a WhatsApp CTA — all optimised for mobile ad traffic.</p>
+                    </div>
+
+                    <div class="cs-outcomes">
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-chart-line"></i></span>
+                            <span class="co-text">Dedicated lead capture form with WhatsApp CTA</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-mobile-alt"></i></span>
+                            <span class="co-text">Optimised for mobile ad traffic</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-stopwatch"></i></span>
+                            <span class="co-text">Single-page, fast-load design under 1s</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-cta-row">
+                        <span class="btn primary btn-disabled">
+                            <i class="fas fa-clock"></i> Demo Coming Soon
+                        </span>
+                        <a href="#contact" class="btn secondary cs-inquire">
+                            <i class="fas fa-paper-plane"></i> Similar Project?
+                        </a>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- ── 3. JAVA BOOKING APP (PLACEHOLDER) ─────────── -->
+            <article class="cs-card" data-category="webapp">
+
+                <div class="cs-image-col">
+                    <div class="cs-thumb cs-placeholder-thumb" style="--ph-color-a:#0a1a10;--ph-color-b:#00C896">
+                        <div class="cs-ph-mockup">
+                            <div class="ph-browser">
+                                <div class="ph-bar"><span></span><span></span><span></span></div>
+                                <div class="ph-hero-band" style="background:rgba(0,200,150,.15)"></div>
+                                <div class="ph-body">
+                                    <div class="ph-line long"></div>
+                                    <div class="ph-line short"></div>
+                                    <div class="ph-table">
+                                        <div class="ph-table-row header"></div>
+                                        <div class="ph-table-row"></div>
+                                        <div class="ph-table-row"></div>
+                                        <div class="ph-table-row"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cs-ph-label">Coming Soon</div>
+                    </div>
+
+                    <div class="cs-stack">
+                        <span class="stack-chip"><i class="fab fa-java"></i> Java</span>
+                        <span class="stack-chip"><i class="fas fa-leaf"></i> Spring Boot</span>
+                        <span class="stack-chip"><i class="fas fa-database"></i> MySQL</span>
+                        <span class="stack-chip"><i class="fab fa-html5"></i> HTML/CSS</span>
+                    </div>
+                </div>
+
+                <div class="cs-detail-col">
+
+                    <div class="cs-meta-row">
+                        <span class="cs-type-badge cs-wip">
+                            <i class="fas fa-clock"></i> In Progress
+                        </span>
+                        <span class="cs-type-label">Java Web Application</span>
+                    </div>
+
+                    <h3 class="cs-title">MediBook — Clinic Appointment System</h3>
+                    <p class="cs-tagline">A full-stack appointment booking application for a multi-doctor medical clinic.</p>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">The Problem</div>
+                        <p>A local clinic was managing patient appointments through phone calls and a paper register. Double bookings, missed appointments, and no digital patient records were costing them time and trust.</p>
+                    </div>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">My Solution</div>
+                        <p>Built a Spring Boot web application with a patient-facing booking form, an admin dashboard for managing appointments by doctor and date, email confirmations, and a MySQL database for persistent records.</p>
+                    </div>
+
+                    <div class="cs-outcomes">
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-calendar-check"></i></span>
+                            <span class="co-text">Online booking with real-time slot availability</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-shield-alt"></i></span>
+                            <span class="co-text">Secure admin dashboard with role-based access</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-envelope"></i></span>
+                            <span class="co-text">Automated email confirmations via JavaMail</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-cta-row">
+                        <span class="btn primary btn-disabled">
+                            <i class="fas fa-clock"></i> Demo Coming Soon
+                        </span>
+                        <a href="#contact" class="btn secondary cs-inquire">
+                            <i class="fas fa-paper-plane"></i> Similar Project?
+                        </a>
+                    </div>
+
+                </div>
+
+            </article>
+
+            <!-- ── 4. LOCAL BUSINESS (PLACEHOLDER) ───────────── -->
+            <article class="cs-card" data-category="website">
+
+                <div class="cs-image-col">
+                    <div class="cs-thumb cs-placeholder-thumb" style="--ph-color-a:#1c1008;--ph-color-b:#FF6B35">
+                        <div class="cs-ph-mockup">
+                            <div class="ph-browser">
+                                <div class="ph-bar"><span></span><span></span><span></span></div>
+                                <div class="ph-hero-band" style="background:rgba(255,107,53,.15)"></div>
+                                <div class="ph-body">
+                                    <div class="ph-line long"></div>
+                                    <div class="ph-line medium"></div>
+                                    <div class="ph-btn-row"><div class="ph-btn-block" style="background:rgba(255,107,53,.5)"></div></div>
+                                    <div class="ph-cards">
+                                        <div class="ph-mini-card"></div>
+                                        <div class="ph-mini-card"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cs-ph-label">Coming Soon</div>
+                    </div>
+
+                    <div class="cs-stack">
+                        <span class="stack-chip"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="stack-chip"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="stack-chip"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="stack-chip"><i class="fas fa-cloud"></i> Netlify</span>
+                    </div>
+                </div>
+
+                <div class="cs-detail-col">
+
+                    <div class="cs-meta-row">
+                        <span class="cs-type-badge cs-wip">
+                            <i class="fas fa-clock"></i> In Progress
+                        </span>
+                        <span class="cs-type-label">E-Commerce Store</span>
+                    </div>
+
+                    <h3 class="cs-title">SpiceRoute — Online Spice Store</h3>
+                    <p class="cs-tagline">An e-commerce website for a home-based spice business looking to sell across India.</p>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">The Problem</div>
+                        <p>A home-based business selling handmade spice blends relied entirely on WhatsApp orders from friends and family. They had no way to reach new customers or showcase their 30+ product range professionally.</p>
+                    </div>
+
+                    <div class="cs-block">
+                        <div class="cs-block-label">My Solution</div>
+                        <p>Designed a clean product catalogue website with category filters, product detail pages, a WhatsApp order button, and a Google Maps–integrated contact section — all hosted on Netlify for zero monthly cost.</p>
+                    </div>
+
+                    <div class="cs-outcomes">
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-tags"></i></span>
+                            <span class="co-text">30+ products organised with filter by category</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fab fa-whatsapp"></i></span>
+                            <span class="co-text">Direct WhatsApp order flow — no payment gateway fees</span>
+                        </div>
+                        <div class="cs-outcome">
+                            <span class="co-icon"><i class="fas fa-rupee-sign"></i></span>
+                            <span class="co-text">₹0/month hosting cost on Netlify free tier</span>
+                        </div>
+                    </div>
+
+                    <div class="cs-cta-row">
+                        <span class="btn primary btn-disabled">
+                            <i class="fas fa-clock"></i> Demo Coming Soon
+                        </span>
+                        <a href="#contact" class="btn secondary cs-inquire">
+                            <i class="fas fa-paper-plane"></i> Similar Project?
+                        </a>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="portfolio-footer">
+            <p>Have a project in mind?</p>
+            <a href="#contact" class="btn accent">
+                <i class="fas fa-paper-plane"></i> Discuss Your Project
+            </a>
         </div>
 
     </section>
@@ -491,8 +806,8 @@
             <p>Freelance Java Backend &amp; Fullstack Developer helping businesses succeed online.</p>
 
             <div class="socials">
-                <a href="https://www.linkedin.com/in/chaitanyakhowal/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/ChaitanyaKhowal" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
 
