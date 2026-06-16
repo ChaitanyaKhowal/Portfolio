@@ -13,26 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- ╔══════════════════════════════════════════════╗
-         ║  FAVICON STRATEGY                           ║
-         ║  Replace href values with your real files.  ║
-         ║  Generate a full set at: favicon.io         ║
-         ╚══════════════════════════════════════════════╝ -->
-    <link rel="icon"             type="image/svg+xml"  href="favicon.svg">
-    <link rel="icon"             type="image/png"      href="favicon-32.png" sizes="32x32">
-    <link rel="icon"             type="image/png"      href="favicon-16.png" sizes="16x16">
-    <link rel="apple-touch-icon"                       href="apple-touch-icon.png" sizes="180x180">
-    <link rel="manifest"                               href="site.webmanifest">
-    <meta name="theme-color" content="#0D1117">
-
-    <!-- Open Graph — controls link previews on WhatsApp / LinkedIn / Twitter -->
-    <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://YOUR-DOMAIN-HERE.com/">
-    <meta property="og:title"       content="Chaitanya | Java Backend & Fullstack Developer">
-    <meta property="og:description" content="I build modern websites and web applications that help businesses grow online. Available for freelance projects.">
-    <meta property="og:image"       content="https://YOUR-DOMAIN-HERE.com/og-image.png">
-    <meta name="twitter:card"       content="summary_large_image">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -65,8 +45,7 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#hero">Home</a></li>
-                <li><a href="#about">Why Us</a></li>
-                <li><a href="#process">Process</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#portfolio">Projects</a></li>
@@ -76,19 +55,6 @@
             </ul>
 
             <div class="nav-actions">
-                <!-- ╔══════════════════════════════════════════════════════╗
-                     ║  RESUME: replace href with your actual PDF link.    ║
-                     ║  Recommended hosts: Google Drive (anyone with link) ║
-                     ║  or upload resume.pdf to this project folder.       ║
-                     ╚══════════════════════════════════════════════════════╝ -->
-                <a href="resume.pdf"
-                   target="_blank"
-                   rel="noopener"
-                   class="btn-resume"
-                   aria-label="Download Resume">
-                    <i class="fas fa-file-arrow-down"></i>
-                    <span>Resume</span>
-                </a>
                 <button id="themeBtn" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -138,14 +104,6 @@
                 </a>
                 <a href="#contact" class="btn secondary">
                     <i class="fas fa-paper-plane"></i> Hire Me
-                </a>
-                <!-- Resume — same href as navbar button above -->
-                <a href="resume.pdf"
-                   target="_blank"
-                   rel="noopener"
-                   class="btn hero-resume-btn"
-                   aria-label="Download Resume">
-                    <i class="fas fa-file-arrow-down"></i> Resume
                 </a>
             </div>
 
@@ -206,226 +164,41 @@
     </section>
 
     <!-- =========================================================
-         WHY BUSINESSES WORK WITH ME
+         ABOUT
     ========================================================== -->
     <section id="about">
 
         <div class="section-header">
-            <div class="section-tag">Why Choose Me</div>
-            <h2>What You Get When You Work With Me</h2>
-            <p class="section-sub">Not just a developer — a business partner who understands that your website is a revenue tool, not a brochure.</p>
+            <div class="section-tag">About Me</div>
+            <h2>Creating Digital Experiences</h2>
         </div>
 
-        <!-- Top: three primary differentiators -->
-        <div class="why-primary">
+        <div class="about-container">
 
-            <div class="why-card why-card--accent">
-                <div class="why-icon"><i class="fas fa-bullseye"></i></div>
-                <h3>Business-First Thinking</h3>
-                <p>Every design decision is tied to a goal — more enquiries, more bookings, more sales. I don't build pretty websites that do nothing; I build websites that work.</p>
-                <ul class="why-list">
-                    <li>Conversion-focused layouts</li>
-                    <li>Clear calls-to-action on every page</li>
-                    <li>Copy written for your customers, not for you</li>
-                </ul>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=800"
+                    alt="Chaitanya — Fullstack Developer">
             </div>
 
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-bolt"></i></div>
-                <h3>Fast, Reliable Delivery</h3>
-                <p>Most small business websites are done within 7–14 days. You get a fixed scope, a clear deadline, and daily updates — no disappearing acts.</p>
-                <ul class="why-list">
-                    <li>Agreed scope before work begins</li>
-                    <li>Daily progress updates via WhatsApp</li>
-                    <li>Delivered on time, every time</li>
-                </ul>
+            <div class="about-content">
+
+                <h3>Helping Businesses Build Their Online Presence</h3>
+
+                <p>
+                    I design and develop modern websites that help businesses
+                    attract more customers, increase credibility, and generate revenue.
+                </p>
+
+                <p>
+                    From business websites to complete Java-powered web applications,
+                    I deliver professional solutions tailored to your goals — on time
+                    and within budget.
+                </p>
+
+                <a href="#contact" class="btn primary">Let's Work Together</a>
+
             </div>
 
-            <div class="why-card">
-                <div class="why-icon"><i class="fas fa-shield-halved"></i></div>
-                <h3>You Own Everything</h3>
-                <p>Your domain, your hosting, your code. I hand over full ownership after launch — no monthly "maintenance" lock-ins unless you choose them.</p>
-                <ul class="why-list">
-                    <li>Full source code delivered</li>
-                    <li>Domain & hosting in your name</li>
-                    <li>Free 30-day post-launch support</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- Divider row: mini trust signals -->
-        <div class="why-trust-bar">
-
-            <div class="trust-item">
-                <span class="trust-num">7–14</span>
-                <span class="trust-label">Days avg. delivery</span>
-            </div>
-            <div class="trust-divider" aria-hidden="true"></div>
-
-            <div class="trust-item">
-                <span class="trust-num">₹0</span>
-                <span class="trust-label">Hidden fees ever</span>
-            </div>
-            <div class="trust-divider" aria-hidden="true"></div>
-
-            <div class="trust-item">
-                <span class="trust-num">30</span>
-                <span class="trust-label">Days free support</span>
-            </div>
-            <div class="trust-divider" aria-hidden="true"></div>
-
-            <div class="trust-item">
-                <span class="trust-num">100%</span>
-                <span class="trust-label">Ownership transferred</span>
-            </div>
-
-        </div>
-
-        <!-- Bottom: secondary proof points in a compact row -->
-        <div class="why-secondary">
-
-            <div class="why-proof">
-                <span class="wp-icon"><i class="fas fa-mobile-screen"></i></span>
-                <div>
-                    <strong>Mobile-first by default</strong>
-                    <span>Every site I build is tested on phones before desktops — because that's where your customers are.</span>
-                </div>
-            </div>
-
-            <div class="why-proof">
-                <span class="wp-icon"><i class="fas fa-magnifying-glass-chart"></i></span>
-                <div>
-                    <strong>SEO foundations included</strong>
-                    <span>Clean HTML structure, fast load times, and proper meta tags — so Google can actually find you.</span>
-                </div>
-            </div>
-
-            <div class="why-proof">
-                <span class="wp-icon"><i class="fas fa-indian-rupee-sign"></i></span>
-                <div>
-                    <strong>Local market pricing</strong>
-                    <span>Premium quality at prices built for Indian businesses — no inflated agency overheads.</span>
-                </div>
-            </div>
-
-            <div class="why-proof">
-                <span class="wp-icon"><i class="fas fa-comments"></i></span>
-                <div>
-                    <strong>Clear communication</strong>
-                    <span>You'll always know where your project stands. No jargon, no silence, no excuses.</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="why-cta-row">
-            <a href="#contact" class="btn primary">
-                <i class="fas fa-paper-plane"></i> Start Your Project
-            </a>
-            <a href="#portfolio" class="btn secondary">
-                <i class="fas fa-folder-open"></i> See the Work First
-            </a>
-        </div>
-
-    </section>
-
-    <!-- =========================================================
-         HOW WE WORK
-    ========================================================== -->
-    <section id="process">
-
-        <div class="section-header">
-            <div class="section-tag">The Process</div>
-            <h2>How We Work Together</h2>
-            <p class="section-sub">From first message to live website — a clear, predictable process with no surprises.</p>
-        </div>
-
-        <div class="process-track">
-
-            <div class="process-step">
-                <div class="ps-connector" aria-hidden="true"></div>
-                <div class="ps-node">
-                    <div class="ps-num">01</div>
-                </div>
-                <div class="ps-body">
-                    <div class="ps-icon"><i class="fas fa-comments"></i></div>
-                    <h3>Discovery Call</h3>
-                    <p>We start with a free 20-minute call (or WhatsApp chat) to understand your business, your goals, and what you need from your website. No sales pitch — just listening.</p>
-                    <div class="ps-duration">
-                        <i class="fas fa-clock"></i> Day 1
-                    </div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="ps-connector" aria-hidden="true"></div>
-                <div class="ps-node">
-                    <div class="ps-num">02</div>
-                </div>
-                <div class="ps-body">
-                    <div class="ps-icon"><i class="fas fa-file-lines"></i></div>
-                    <h3>Proposal &amp; Scope</h3>
-                    <p>I send a clear written proposal — fixed price, fixed scope, fixed deadline. You know exactly what you're getting and what it costs before anything begins.</p>
-                    <div class="ps-duration">
-                        <i class="fas fa-clock"></i> Day 1–2
-                    </div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="ps-connector" aria-hidden="true"></div>
-                <div class="ps-node">
-                    <div class="ps-num">03</div>
-                </div>
-                <div class="ps-body">
-                    <div class="ps-icon"><i class="fas fa-pen-ruler"></i></div>
-                    <h3>Design &amp; Build</h3>
-                    <p>I design and develop your website with daily WhatsApp updates so you can see progress in real time. You can give feedback at any stage — no waiting until the end.</p>
-                    <div class="ps-duration">
-                        <i class="fas fa-clock"></i> Days 3–12
-                    </div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="ps-connector" aria-hidden="true"></div>
-                <div class="ps-node">
-                    <div class="ps-num">04</div>
-                </div>
-                <div class="ps-body">
-                    <div class="ps-icon"><i class="fas fa-vials"></i></div>
-                    <h3>Review &amp; Revisions</h3>
-                    <p>You get a private preview link to review the site before it goes live. Up to 2 rounds of revisions are included — we don't launch until you're happy.</p>
-                    <div class="ps-duration">
-                        <i class="fas fa-clock"></i> Days 12–14
-                    </div>
-                </div>
-            </div>
-
-            <div class="process-step">
-                <div class="ps-node ps-node--final">
-                    <div class="ps-num">05</div>
-                </div>
-                <div class="ps-body">
-                    <div class="ps-icon ps-icon--accent"><i class="fas fa-rocket"></i></div>
-                    <h3>Launch &amp; Handover</h3>
-                    <p>Your site goes live. I transfer full ownership — domain, hosting, and source code — all in your name. Then I stay available for 30 days, free, for any questions or fixes.</p>
-                    <div class="ps-duration ps-duration--accent">
-                        <i class="fas fa-flag-checkered"></i> Go Live
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="process-cta">
-            <div class="process-cta-inner">
-                <p>Ready to get started?</p>
-                <a href="#contact" class="btn accent">
-                    <i class="fas fa-paper-plane"></i> Let's Talk About Your Project
-                </a>
-            </div>
         </div>
 
     </section>
@@ -446,8 +219,8 @@
         </div>
 
         <div class="stat-card">
-            <h2 data-target="7">0</h2>
-            <p>Day Avg. Delivery</p>
+            <h2 data-target="5">0</h2>
+            <p>Years of Learning</p>
         </div>
 
         <div class="stat-card">
@@ -503,9 +276,8 @@
     <section id="skills">
 
         <div class="section-header">
-            <div class="section-tag">Built With</div>
-            <h2>Tools That Deliver Results</h2>
-            <p class="section-sub">Every technology we use is chosen because it builds faster, loads faster, and costs you less to maintain.</p>
+            <div class="section-tag">My Skills</div>
+            <h2>Technology Stack</h2>
         </div>
 
         <div class="skills-grid">
@@ -520,88 +292,6 @@
         </div>
 
     </section>
-
-    <!-- =========================================================
-         INDUSTRIES WE SERVE
-    ========================================================== -->
-    <section id="industries">
-
-        <div class="section-header">
-            <div class="section-tag">Industries</div>
-            <h2>Who We Build For</h2>
-            <p class="section-sub">We specialise in businesses that rely on local reputation, customer trust, and a strong online first impression.</p>
-        </div>
-
-        <div class="ind-grid">
-
-            <div class="ind-card">
-                <div class="ind-icon"><i class="fas fa-utensils"></i></div>
-                <h3>Restaurants &amp; Cafés</h3>
-                <p>Menu showcases, reservation forms, location maps, and gallery pages that turn searchers into walk-ins.</p>
-                <div class="ind-tag">Live project available</div>
-            </div>
-
-            <div class="ind-card">
-                <div class="ind-icon"><i class="fas fa-dumbbell"></i></div>
-                <h3>Gyms &amp; Fitness Studios</h3>
-                <p>Membership landing pages optimised for Instagram and Google ad traffic, with WhatsApp enquiry flows.</p>
-                <div class="ind-tag">In progress</div>
-            </div>
-
-            <div class="ind-card">
-                <div class="ind-icon"><i class="fas fa-stethoscope"></i></div>
-                <h3>Clinics &amp; Healthcare</h3>
-                <p>Appointment booking systems, doctor profiles, and patient trust-building pages backed by a Java backend.</p>
-                <div class="ind-tag">In progress</div>
-            </div>
-
-            <div class="ind-card">
-                <div class="ind-icon"><i class="fas fa-store"></i></div>
-                <h3>Retail &amp; Local Shops</h3>
-                <p>Product catalogues, WhatsApp order flows, and Google Business–integrated pages for neighbourhood stores.</p>
-                <div class="ind-tag">Available</div>
-            </div>
-
-            <div class="ind-card">
-                <div class="ind-icon"><i class="fas fa-graduation-cap"></i></div>
-                <h3>Coaching &amp; Education</h3>
-                <p>Course listing pages, student enquiry forms, and batch schedule systems for tutors and coaching institutes.</p>
-                <div class="ind-tag">Available</div>
-            </div>
-
-            <div class="ind-card ind-card--cta">
-                <div class="ind-icon ind-icon--accent"><i class="fas fa-plus"></i></div>
-                <h3>Your Industry</h3>
-                <p>Don't see your sector listed? Every business with customers deserves a website that works. Let's talk.</p>
-                <a href="#contact" class="btn primary ind-cta-btn">
-                    <i class="fas fa-paper-plane"></i> Discuss Your Project
-                </a>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- =========================================================
-         PRE-PORTFOLIO CTA
-    ========================================================== -->
-    <div class="ppc-band">
-        <div class="ppc-inner">
-            <div class="ppc-copy">
-                <span class="ppc-eyebrow">Real Work. Real Results.</span>
-                <p>Every project below started with a business problem. Read how we solved it.</p>
-            </div>
-            <div class="ppc-actions">
-                <a href="#contact" class="btn accent">
-                    <i class="fas fa-paper-plane"></i> Start Your Project
-                </a>
-                <span class="ppc-divider" aria-hidden="true">or</span>
-                <span class="ppc-scroll-hint">
-                    <i class="fas fa-arrow-down"></i> See the work first
-                </span>
-            </div>
-        </div>
-    </div>
 
     <!-- =========================================================
          PORTFOLIO
