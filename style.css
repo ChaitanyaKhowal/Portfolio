@@ -2580,6 +2580,18 @@ body.dark .estimator-summary {
   }
 }
 
+@media (max-width: 480px) {
+  .price-estimator {
+    padding: 24px 16px;
+    margin-top: 32px;
+    border-radius: var(--r-lg);
+  }
+  .estimator-summary {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+}
+
 /* ============================================================
    TESTIMONIAL SUBMISSION FORM STYLES
    ============================================================ */
