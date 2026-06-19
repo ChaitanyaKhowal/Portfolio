@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitForge Gym — Premium Fitness Center & Coaching</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0A0D14;
+            --surface-card: #141923;
+            --accent-neon: #00F0FF; /* Electric Cyan */
+            --accent-glow: rgba(0, 240, 255, 0.35);
+            --text-light: #F0F4F8;
+            --text-muted: #8C9BB0;
+            --border-glow: rgba(0, 240, 255, 0.15);
+            --r-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 20px 6vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 13, 20, 0.8);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--accent-neon);
+        }
+
+        .badge-live {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid var(--accent-neon);
+            color: var(--accent-neon);
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 6vw;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+            padding: 80px 0;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-neon);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: var(--r-md);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-neon);
+            color: #0A0D14;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 240, 255, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            border-radius: var(--r-md);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-glow);
+            max-width: 100%;
+        }
+
+        /* Pricing Packages */
+        .packages-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 3.5vw, 36px);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: var(--surface-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--r-md);
+            padding: 40px 30px;
+            text-align: left;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-neon);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.08);
+        }
+
+        .package-card.popular {
+            border-color: rgba(0, 240, 255, 0.4);
+        }
+
+        .package-card.popular::after {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--accent-neon);
+            color: #0A0D14;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 4px 30px;
+            transform: rotate(45deg);
+        }
+
+        .package-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .package-price {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+
+        .package-price span {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            font-size: 14.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li i {
+            color: var(--accent-neon);
+        }
+
+        /* Lead Intake Form */
+        .form-section {
+            background: var(--surface-card);
+            border-radius: var(--r-md);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 50px 40px;
+            margin-top: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(10, 13, 20, 0.6);
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--accent-neon);
+        }
+
+        /* Simulated Modal Success */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 13, 20, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--surface-card);
+            border: 1px solid var(--accent-neon);
+            box-shadow: 0 10px 40px var(--accent-glow);
+            border-radius: var(--r-md);
+            padding: 40px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 240, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--accent-neon);
+            margin: 0 auto 20px;
+        }
+
+        .modal-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .modal-card p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto 32px;
+            }
+            .form-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Fit<span>Forge</span></div>
+        <div style="display:flex; align-items:center; gap:12px;">
+            <span class="badge-live"><i class="fas fa-eye"></i> Simulated Demo</span>
+            <a href="index.html" class="btn" style="padding: 6px 12px; font-size: 12px; background: rgba(255,255,255,0.06); color: #fff;">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Build Your Body, <span>Forge Your Mind</span></h1>
+                <p>Premium coaching, state-of-the-art equipment, and custom nutrition programs tailored for your ultimate fitness transformation.</p>
+                <a href="#join" class="btn btn-primary"><i class="fas fa-calendar-alt"></i> Book Free Consultation</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80" alt="Gym training">
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section class="packages-section">
+            <h2 class="section-title">Membership Plans</h2>
+            <p class="section-desc">Select the plan that fits your schedule and goals. Zero hidden setup fees, cancel anytime.</p>
+            
+            <div class="packages-grid">
+                
+                <div class="package-card">
+                    <div class="package-name">Basic Pass</div>
+                    <div class="package-price">₹1,499<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Unlimited Gym Floor Access</li>
+                        <li><i class="fas fa-circle-check"></i> Modern Equipment Access</li>
+                        <li><i class="fas fa-circle-check"></i> Free Locker Rooms & Shower</li>
+                        <li style="color: var(--text-muted)"><i class="fas fa-circle-xmark"></i> Personal Trainer Guided Sessions</li>
+                    </ul>
+                    <a href="#join" class="btn btn-primary" style="width:100%; text-align:center; justify-content:center;">Select Plan</a>
+                </div>
+
+                <div class="package-card popular">
+                    <div class="package-name">Elite Coaching</div>
+                    <div class="package-price">₹3,499<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> Unlimited Gym Floor Access</li>
+                        <li><i class="fas fa-circle-check"></i> 1-on-1 Personal Trainer (2x/week)</li>
+                        <li><i class="fas fa-circle-check"></i> Custom Nutrition & Diet Planner</li>
+                        <li><i class="fas fa-circle-check"></i> Weekly Body Composition Audit</li>
+                    </ul>
+                    <a href="#join" class="btn btn-primary" style="width:100%; text-align:center; justify-content:center;">Select Plan</a>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-name">Platinum VIP</div>
+                    <div class="package-price">₹6,999<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-circle-check"></i> 24/7 Unlimited Gym Access</li>
+                        <li><i class="fas fa-circle-check"></i> Dedicated Master Trainer Daily</li>
+                        <li><i class="fas fa-circle-check"></i> Free Protein Shakes & Supplements</li>
+                        <li><i class="fas fa-circle-check"></i> Spa, Massage & Sauna Included</li>
+                    </ul>
+                    <a href="#join" class="btn btn-primary" style="width:100%; text-align:center; justify-content:center;">Select Plan</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Intake Form Section -->
+        <section id="join" class="form-section">
+            <h2 class="section-title" style="text-align:center;">Start Your Journey</h2>
+            <p class="section-desc" style="text-align:center; margin-bottom: 30px;">Get a free 1-day pass and composition consult with one of our master trainers.</p>
+            
+            <form id="intakeForm">
+                <div class="form-group">
+                    <label for="fName">Full Name</label>
+                    <input type="text" id="fName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="fEmail">Email Address</label>
+                    <input type="email" id="fEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="fPlan">Preferred Plan</label>
+                    <select id="fPlan">
+                        <option value="Basic Pass">Basic Pass (₹1,499/mo)</option>
+                        <option value="Elite Coaching" selected>Elite Coaching (₹3,499/mo)</option>
+                        <option value="Platinum VIP">Platinum VIP (₹6,999/mo)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px;">
+                    <i class="fas fa-paper-plane"></i> Get Free 1-Day Pass
+                </button>
+            </form>
+        </section>
+
+    </div>
+
+    <!-- Modal Success -->
+    <div class="modal" id="successModal">
+        <div class="modal-card">
+            <div class="modal-icon"><i class="fas fa-check-double"></i></div>
+            <h3>Pass Generated Successfully!</h3>
+            <p id="successMessage">Your Elite Coaching trial pass has been created. One of our advisors will contact you shortly.</p>
+            <button class="btn btn-primary" id="closeModalBtn" style="width:100%; justify-content:center;">Got it, thanks!</button>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("intakeForm");
+        const modal = document.getElementById("successModal");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const successMessage = document.getElementById("successMessage");
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("fName").value;
+            const plan = document.getElementById("fPlan").value;
+
+            successMessage.textContent = `Hey ${name}, your trial pass for the "${plan}" membership has been generated! An advisor will call you within 2 hours to confirm your gym slot.`;
+            modal.classList.add("active");
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+            modal.classList.remove("active");
+            form.reset();
+        });
+    </script>
+</body>
+</html>

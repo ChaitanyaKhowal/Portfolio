@@ -2265,3 +2265,472 @@ footer {
     transition-duration: .01ms !important;
   }
 }
+
+/* ============================================================
+   INTERACTIVE CONSOLE STYLES
+   ============================================================ */
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  background: rgba(255,255,255,.02);
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid rgba(255,255,255,.05);
+}
+
+.terminal-input-line input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  caret-color: var(--accent);
+}
+
+.terminal-suggestions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,.3);
+}
+
+.t-suggest-btn {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.6);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: inherit;
+  transition: all var(--dur) var(--ease);
+}
+
+.t-suggest-btn:hover {
+  background: var(--accent);
+  color: #0D1117;
+  border-color: var(--accent);
+}
+
+/* ============================================================
+   INTERACTIVE PRICING ESTIMATOR
+   ============================================================ */
+.price-estimator {
+  margin-top: 64px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+body.dark .price-estimator {
+  background: rgba(22,27,34,.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(255,255,255,.06);
+}
+
+.estimator-header {
+  margin-bottom: 32px;
+}
+
+.estimator-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.estimator-header h3 i {
+  color: var(--accent);
+}
+
+.estimator-header p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.estimator-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+}
+
+.estimator-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.estimator-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.estimator-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.estimator-group .badge {
+  background: rgba(15,122,224,.1);
+  color: var(--brand);
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+body.dark .estimator-group .badge {
+  background: rgba(0,200,150,.1);
+  color: var(--accent);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--surface-2);
+  outline: none;
+}
+
+body.dark .slider {
+  background: rgba(255,255,255,.08);
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--brand);
+  cursor: pointer;
+  transition: transform var(--dur) var(--ease);
+}
+
+body.dark .slider::-webkit-slider-thumb {
+  background: var(--accent);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.estimator-group.checkboxes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.est-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  font-size: 13.5px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.est-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.cb-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  flex-shrink: 0;
+  transition: all var(--dur) var(--ease);
+}
+
+body.dark .cb-custom {
+  border-color: rgba(255,255,255,.2);
+}
+
+.est-checkbox input:checked ~ .cb-custom {
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+body.dark .est-checkbox input:checked ~ .cb-custom {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cb-custom::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+body.dark .cb-custom::after {
+  border-color: #0D1117;
+}
+
+.est-checkbox input:checked ~ .cb-custom::after {
+  display: block;
+}
+
+.cb-label {
+  color: var(--text);
+  transition: color var(--dur) var(--ease);
+}
+
+.est-checkbox:hover .cb-custom {
+  border-color: var(--brand);
+}
+
+body.dark .est-checkbox:hover .cb-custom {
+  border-color: var(--accent);
+}
+
+.estimator-summary {
+  background: var(--surface-2);
+  border-radius: var(--r-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+  gap: 24px;
+}
+
+body.dark .estimator-summary {
+  background: rgba(255,255,255,.02);
+  border-color: rgba(255,255,255,.05);
+}
+
+.est-price-box {
+  text-align: center;
+}
+
+.est-price-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+
+.est-price-value {
+  font-size: clamp(32px, 3.5vw, 42px);
+  font-weight: 800;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.est-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.est-features-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.est-features-list li i {
+  color: var(--accent);
+}
+
+#estimatorCta {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .estimator-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* ============================================================
+   TESTIMONIAL SUBMISSION FORM STYLES
+   ============================================================ */
+.testimonial-form-container {
+  margin-top: 56px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: var(--shadow-md);
+}
+
+body.dark .testimonial-form-container {
+  background: rgba(22,27,34,.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-color: rgba(255,255,255,.06);
+}
+
+.tf-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.tf-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.tf-header p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.review-mini-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rating-stars-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.stars i {
+  color: var(--border);
+  cursor: pointer;
+  font-size: 18px;
+  transition: all var(--dur) var(--ease);
+}
+
+body.dark .stars i {
+  color: rgba(255,255,255,.15);
+}
+
+.stars i.active {
+  color: #FFB800;
+}
+
+.review-mini-form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--text);
+  resize: vertical;
+  outline: none;
+  transition: border-color var(--dur) var(--ease);
+}
+
+body.dark .review-mini-form textarea {
+  border-color: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.03);
+}
+
+.review-mini-form textarea:focus {
+  border-color: var(--brand);
+}
+
+body.dark .review-mini-form textarea:focus {
+  border-color: var(--accent);
+}
+
+.review-inputs-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+}
+
+.review-inputs-row input {
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--text);
+  outline: none;
+}
+
+body.dark .review-inputs-row input {
+  border-color: rgba(255,255,255,.1);
+  background: rgba(255,255,255,.03);
+}
+
+.review-inputs-row input:focus {
+  border-color: var(--brand);
+}
+
+body.dark .review-inputs-row input:focus {
+  border-color: var(--accent);
+}
+
+@media (max-width: 580px) {
+  .review-inputs-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   ENHANCED GLASSMORPHISM SURFACES & SHADOWS
+   ============================================================ */
+.cs-card {
+  transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s cubic-bezier(.16, 1, .3, 1);
+}
+.cs-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg), 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+body.dark .cs-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 2px rgba(255,255,255,0.06);
+}
+

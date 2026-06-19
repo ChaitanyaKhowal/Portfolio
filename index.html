@@ -167,8 +167,8 @@
         </div>
 
         <!-- Right: terminal window -->
-        <div class="hero-image" aria-hidden="true">
-            <div class="terminal">
+        <div class="hero-image">
+            <div class="terminal" id="heroTerminal">
 
                 <div class="terminal-bar">
                     <span class="t-dot r"></span>
@@ -177,27 +177,40 @@
                     <span class="terminal-filename">~/projects/client-website</span>
                 </div>
 
-                <div class="terminal-body">
-                    <span class="tl"><span class="tp">$</span> <span class="tc">git</span> <span class="tf">clone</span> <span class="ts">client-website.git</span></span>
-                    <span class="tl"><span class="tv">Cloning into 'client-website'...</span></span>
-                    <span class="tl"><span class="tg">✓ Done</span></span>
-                    <span class="tl"></span>
-                    <span class="tl"><span class="tp">$</span> <span class="tc">mvn</span> <span class="tf">spring-boot:run</span></span>
-                    <span class="tl"><span class="td">// Starting application on port 8080</span></span>
-                    <span class="tl"><span class="tk">INFO </span><span class="tv">Tomcat started on port(s): </span><span class="ts">8080</span></span>
-                    <span class="tl"><span class="tg">✓ Application is running</span></span>
-                    <span class="tl"></span>
-                    <span class="tl"><span class="tp">$</span> <span class="tc">npm</span> <span class="tf">run</span> <span class="ts">build</span></span>
-                    <span class="tl"><span class="tv">Building for production...</span></span>
-                    <span class="tl"><span class="tg">✓ Build complete — 98/100 Lighthouse</span></span>
-                    <span class="tl"></span>
-                    <span class="tl"><span class="tp">$</span> <span class="tc">git</span> <span class="tf">push</span> <span class="ts">origin main</span></span>
-                    <span class="tl"><span class="tg">✓ Deployed to production</span> <span class="td">// 🚀</span></span>
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-history" id="terminalHistory">
+                        <span class="tl"><span class="tp">$</span> <span class="tc">git</span> <span class="tf">clone</span> <span class="ts">client-website.git</span></span>
+                        <span class="tl"><span class="tv">Cloning into 'client-website'...</span></span>
+                        <span class="tl"><span class="tg">✓ Done</span></span>
+                        <span class="tl"></span>
+                        <span class="tl"><span class="tp">$</span> <span class="tc">mvn</span> <span class="tf">spring-boot:run</span></span>
+                        <span class="tl"><span class="td">// Starting application on port 8080</span></span>
+                        <span class="tl"><span class="tk">INFO </span><span class="tv">Tomcat started on port(s): </span><span class="ts">8080</span></span>
+                        <span class="tl"><span class="tg">✓ Application is running</span></span>
+                        <span class="tl"></span>
+                        <span class="tl"><span class="tp">$</span> <span class="tc">npm</span> <span class="tf">run</span> <span class="ts">build</span></span>
+                        <span class="tl"><span class="tv">Building for production...</span></span>
+                        <span class="tl"><span class="tg">✓ Build complete — 98/100 Lighthouse</span></span>
+                        <span class="tl"></span>
+                        <span class="tl"><span class="tp">$</span> <span class="tc">git</span> <span class="tf">push</span> <span class="ts">origin main</span></span>
+                        <span class="tl"><span class="tg">✓ Deployed to production</span> <span class="td">// 🚀</span></span>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="tp">$</span> <input type="text" id="terminalInput" placeholder="Type a command (try 'help')..." autocomplete="off" spellcheck="false">
+                    </div>
+                    <div class="terminal-suggestions">
+                        <span class="ts-label">Suggested:</span>
+                        <button class="t-suggest-btn" data-cmd="help">help</button>
+                        <button class="t-suggest-btn" data-cmd="about">about</button>
+                        <button class="t-suggest-btn" data-cmd="skills">skills</button>
+                        <button class="t-suggest-btn" data-cmd="projects">projects</button>
+                        <button class="t-suggest-btn" data-cmd="clear">clear</button>
+                    </div>
                 </div>
 
                 <div class="terminal-status">
                     <span class="status-led"></span>
-                    <span class="status-label">Server running &nbsp;·&nbsp; <strong>Java 21</strong> &nbsp;·&nbsp; Spring Boot 3 &nbsp;·&nbsp; MySQL</span>
+                    <span class="status-label">Interactive Console &nbsp;·&nbsp; <strong>Java 21</strong> &nbsp;·&nbsp; Spring Boot 3 &nbsp;·&nbsp; MySQL</span>
                 </div>
 
             </div>
@@ -771,9 +784,9 @@
                     </div>
 
                     <div class="cs-cta-row">
-                        <span class="btn primary btn-disabled">
-                            <i class="fas fa-clock"></i> Demo Coming Soon
-                        </span>
+                        <a href="demo-fitforge.html" target="_blank" class="btn primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
                         <a href="#contact" class="btn secondary cs-inquire">
                             <i class="fas fa-paper-plane"></i> Similar Project?
                         </a>
@@ -853,9 +866,9 @@
                     </div>
 
                     <div class="cs-cta-row">
-                        <span class="btn primary btn-disabled">
-                            <i class="fas fa-clock"></i> Demo Coming Soon
-                        </span>
+                        <a href="demo-medibook.html" target="_blank" class="btn primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
                         <a href="#contact" class="btn secondary cs-inquire">
                             <i class="fas fa-paper-plane"></i> Similar Project?
                         </a>
@@ -934,9 +947,9 @@
                     </div>
 
                     <div class="cs-cta-row">
-                        <span class="btn primary btn-disabled">
-                            <i class="fas fa-clock"></i> Demo Coming Soon
-                        </span>
+                        <a href="demo-spiceroute.html" target="_blank" class="btn primary">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
                         <a href="#contact" class="btn secondary cs-inquire">
                             <i class="fas fa-paper-plane"></i> Similar Project?
                         </a>
@@ -1006,6 +1019,66 @@
 
         </div>
 
+        <!-- Cost Estimator Widget -->
+        <div class="price-estimator">
+            <div class="estimator-header">
+                <h3><i class="fas fa-calculator"></i> Project Cost Calculator</h3>
+                <p>Tailor your features and estimate your custom website investment in real time.</p>
+            </div>
+            <div class="estimator-grid">
+                <div class="estimator-controls">
+                    <div class="estimator-group">
+                        <div class="estimator-label-row">
+                            <label for="estPages">Number of Pages:</label>
+                            <span id="pagesVal" class="badge">5 Pages</span>
+                        </div>
+                        <input type="range" id="estPages" min="1" max="15" value="5" class="slider">
+                    </div>
+                    <div class="estimator-group checkboxes">
+                        <label class="est-checkbox">
+                            <input type="checkbox" id="optSEO" checked>
+                            <span class="cb-custom"></span>
+                            <span class="cb-label">SEO Core Setup (+₹1,500)</span>
+                        </label>
+                        <label class="est-checkbox">
+                            <input type="checkbox" id="optWA" checked>
+                            <span class="cb-custom"></span>
+                            <span class="cb-label">WhatsApp Chat Lead Flow (+₹1,000)</span>
+                        </label>
+                        <label class="est-checkbox">
+                            <input type="checkbox" id="optDb">
+                            <span class="cb-custom"></span>
+                            <span class="cb-label">Custom Java Database Backend (+₹8,000)</span>
+                        </label>
+                        <label class="est-checkbox">
+                            <input type="checkbox" id="optAdmin">
+                            <span class="cb-custom"></span>
+                            <span class="cb-label">Dashboard & Admin Panels (+₹5,000)</span>
+                        </label>
+                        <label class="est-checkbox">
+                            <input type="checkbox" id="optUrgent">
+                            <span class="cb-custom"></span>
+                            <span class="cb-label">Express Delivery (under 5 days) (+₹3,000)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="estimator-summary">
+                    <div class="est-price-box">
+                        <span class="est-price-label">Estimated Investment</span>
+                        <div class="est-price-value">₹<span id="estPrice">14,999</span></div>
+                    </div>
+                    <ul class="est-features-list">
+                        <li><i class="fas fa-check"></i> Standard Responsive Layout</li>
+                        <li><i class="fas fa-check"></i> Clean, Hand-coded Structure</li>
+                        <li><i class="fas fa-check"></i> 30 Days Free Support & Handover</li>
+                    </ul>
+                    <a href="#contact" id="estimatorCta" class="btn accent">
+                        <i class="fas fa-comments"></i> Book with This Estimate
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- =========================================================
@@ -1018,23 +1091,51 @@
             <h2>What Clients Say</h2>
         </div>
 
-        <div class="testimonial-slider">
+        <div class="testimonial-slider-container">
+            <div class="testimonial-slider">
+                <div class="testimonial-card active">
+                    <p>Amazing experience. Delivered on time and exceeded expectations completely.</p>
+                    <h4>— Local Business Owner</h4>
+                </div>
 
-            <div class="testimonial-card active">
-                <p>Amazing experience. Delivered on time and exceeded expectations completely.</p>
-                <h4>— Local Business Owner</h4>
+                <div class="testimonial-card">
+                    <p>Great communication throughout and a beautiful, professional website result.</p>
+                    <h4>— Startup Founder</h4>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>Professional design and excellent ongoing support. Highly recommended.</p>
+                    <h4>— Restaurant Owner</h4>
+                </div>
             </div>
+        </div>
 
-            <div class="testimonial-card">
-                <p>Great communication throughout and a beautiful, professional website result.</p>
-                <h4>— Startup Founder</h4>
+        <!-- Add a Review Form -->
+        <div class="testimonial-form-container">
+            <div class="tf-header">
+                <h3><i class="fas fa-edit"></i> Share Your Experience</h3>
+                <p>Are you a previous client? Leave a quick review below to be added to our showcase.</p>
             </div>
-
-            <div class="testimonial-card">
-                <p>Professional design and excellent ongoing support. Highly recommended.</p>
-                <h4>— Restaurant Owner</h4>
-            </div>
-
+            <form id="testimonialForm" class="review-mini-form" novalidate>
+                <div class="rating-stars-input">
+                    <span class="star-label">Your Rating:</span>
+                    <div class="stars" id="starsInput">
+                        <i class="fas fa-star active" data-rating="1"></i>
+                        <i class="fas fa-star active" data-rating="2"></i>
+                        <i class="fas fa-star active" data-rating="3"></i>
+                        <i class="fas fa-star active" data-rating="4"></i>
+                        <i class="fas fa-star active" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" id="reviewRating" value="5">
+                </div>
+                <textarea id="reviewText" placeholder="How was your experience working with me?" required></textarea>
+                <div class="review-inputs-row">
+                    <input type="text" id="reviewName" placeholder="Your Name & Business (e.g. Rahul, Gym Owner)" required>
+                    <button type="submit" class="btn primary">
+                        <i class="fas fa-check"></i> Submit Review
+                    </button>
+                </div>
+            </form>
         </div>
 
     </section>

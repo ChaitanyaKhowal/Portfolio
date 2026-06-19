@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpiceRoute — Premium Handmade Spices & Blends</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C2410C; /* Earthy Terracotta Red */
+            --accent: #EAB308; /* Warm Turmeric Gold */
+            --bg: #FFFDF9; /* Warm Creamy White */
+            --surface: #FFFFFF;
+            --text: #3F2E29; /* Dark Chocolate */
+            --text-muted: #85726B;
+            --border: #F3EFE9;
+            --shadow: 0 4px 18px rgba(63, 46, 41, 0.04);
+            --r-md: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 16px 6vw;
+            background: var(--surface);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cart-icon-btn {
+            background: var(--border);
+            border: none;
+            padding: 10px 14px;
+            border-radius: 99px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text);
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .cart-icon-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .cart-count {
+            background: var(--accent);
+            color: var(--text);
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 99px;
+        }
+
+        .badge-live {
+            background: rgba(194, 65, 12, 0.06);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .hero-banner {
+            text-align: center;
+            padding: 48px 6vw;
+            background: radial-gradient(circle, rgba(234,179,8,0.04) 0%, rgba(194,65,12,0.02) 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-banner h1 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .hero-banner p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        .main-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 6vw 80px;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 40px;
+        }
+
+        /* Category filters */
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        .filter-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-weight: 500;
+            font-size: 13.5px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 20px;
+            text-align: left;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(63, 46, 41, 0.08);
+        }
+
+        .product-img {
+            height: 140px;
+            background: #FAF8F5;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--primary);
+        }
+
+        .product-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            height: 40px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .add-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s ease;
+        }
+
+        .add-btn:hover {
+            background: #a62e05;
+        }
+
+        /* Cart Drawer Sidebar */
+        .cart-sidebar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            align-self: start;
+            position: sticky;
+            top: 90px;
+        }
+
+        .cart-sidebar h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-items-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-height: 280px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13.5px;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-qty-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .qty-btn {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            cursor: pointer;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-val {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .cart-summary {
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .btn-checkout {
+            background: #25D366; /* WhatsApp Green */
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        .btn-checkout:hover {
+            background: #20ba59;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.22);
+        }
+
+        .empty-cart-text {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 13.5px;
+        }
+
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .cart-sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fas fa-seedling"></i> Spice<span>Route</span></div>
+        <div class="header-actions">
+            <span class="badge-live"><i class="fas fa-shopping-basket"></i> WhatsApp Storefront</span>
+            <a href="index.html" class="cart-icon-btn" style="text-decoration:none;">
+                <i class="fas fa-arrow-left"></i> Back to Portfolio
+            </a>
+        </div>
+    </header>
+
+    <div class="hero-banner">
+        <h1>Handmade Spices, Direct To Your Kitchen</h1>
+        <p>Pure, stone-ground, organic spice blends created in small batches without any artificial preservatives or colors.</p>
+    </div>
+
+    <div class="main-layout">
+        
+        <!-- Catalog Column -->
+        <div>
+            <!-- Categories -->
+            <div class="filter-row">
+                <button class="filter-btn active" data-cat="all">All Items</button>
+                <button class="filter-btn" data-cat="blend">Traditional Blends</button>
+                <button class="filter-btn" data-cat="whole">Whole Spices</button>
+                <button class="filter-btn" data-cat="powder">Powders</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="products-grid" id="catalogGrid">
+                <!-- Javascript will load products -->
+            </div>
+        </div>
+
+        <!-- Cart Column -->
+        <div class="cart-sidebar">
+            <h3><span>Shopping Cart</span><span class="cart-count" id="cartCountBadge">0</span></h3>
+            
+            <div class="cart-items-list" id="cartItemsContainer">
+                <div class="empty-cart-text">Your cart is empty. Add some fresh spices!</div>
+            </div>
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">₹0</span>
+                </div>
+            </div>
+
+            <a href="#" class="btn-checkout" id="whatsappCheckoutBtn" style="pointer-events: none; opacity: 0.6;">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, title: "Royal Garam Masala", cat: "blend", price: 120, desc: "Aromatic blend of 15 roasted spices for curries.", icon: "🍲" },
+            { id: 2, title: "Kashmiri Red Chilli", cat: "powder", price: 95, desc: "Provides rich crimson red color with mild heat.", icon: "🌶️" },
+            { id: 3, title: "Turmeric Powder (Haldi)", cat: "powder", price: 80, desc: "High curcumin content, handground organic haldi.", icon: "🌟" },
+            { id: 4, title: "Green Cardamom Whole", cat: "whole", price: 210, desc: "Handpicked premium pods with intense sweet aroma.", icon: "🟢" },
+            { id: 5, title: "Biryani Spice Mix", cat: "blend", price: 130, desc: "Authentic spices for restaurant-style dum biryani.", icon: "🍛" },
+            { id: 6, title: "Black Pepper Whole", cat: "whole", price: 110, desc: "Tellicherry bold pepper corn with hot fruity bite.", icon: "⚫" }
+        ];
+
+        const cart = {};
+
+        const catalogGrid = document.getElementById("catalogGrid");
+        const cartItemsContainer = document.getElementById("cartItemsContainer");
+        const cartCountBadge = document.getElementById("cartCountBadge");
+        const cartSubtotal = document.getElementById("cartSubtotal");
+        const whatsappCheckoutBtn = document.getElementById("whatsappCheckoutBtn");
+
+        // Render catalog
+        function renderCatalog(filter = "all") {
+            catalogGrid.innerHTML = products
+                .filter(p => filter === "all" || p.cat === filter)
+                .map(p => `
+                    <div class="product-card">
+                        <div>
+                            <div class="product-img">${p.icon}</div>
+                            <div class="product-tag">${p.cat}</div>
+                            <h4 class="product-title">${p.title}</h4>
+                            <p class="product-desc">${p.desc}</p>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">₹${p.price}</span>
+                            <button class="add-btn" onclick="addToCart(${p.id})"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                `).join("");
+        }
+
+        // Render Cart
+        function renderCart() {
+            const keys = Object.keys(cart);
+            if (keys.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart-text">Your cart is empty. Add some fresh spices!</div>';
+                cartCountBadge.textContent = 0;
+                cartSubtotal.textContent = "₹0";
+                whatsappCheckoutBtn.style.pointerEvents = "none";
+                whatsappCheckoutBtn.style.opacity = 0.6;
+                return;
+            }
+
+            let subtotal = 0;
+            let count = 0;
+            let html = "";
+
+            keys.forEach(id => {
+                const prod = products.find(p => p.id === parseInt(id));
+                const qty = cart[id];
+                const cost = prod.price * qty;
+                subtotal += cost;
+                count += qty;
+
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <strong>${prod.title}</strong>
+                            <div class="item-qty-row">
+                                <button class="qty-btn" onclick="updateQty(${id}, -1)">-</button>
+                                <span class="qty-val">${qty}</span>
+                                <button class="qty-btn" onclick="updateQty(${id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <strong>₹${cost}</strong>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = html;
+            cartCountBadge.textContent = count;
+            cartSubtotal.textContent = `₹${subtotal}`;
+            whatsappCheckoutBtn.style.pointerEvents = "auto";
+            whatsappCheckoutBtn.style.opacity = 1;
+
+            // Prefill WhatsApp text
+            const orderList = keys.map(id => {
+                const prod = products.find(p => p.id === parseInt(id));
+                return `- ${prod.title} x${cart[id]} (₹${prod.price * cart[id]})`;
+            }).join("\n");
+            
+            const message = encodeURIComponent(`Hi SpiceRoute, I'd like to place an order for the following fresh spices:\n\n${orderList}\n\nTotal: ₹${subtotal}\n\nPlease share delivery confirmation details.`);
+            whatsappCheckoutBtn.href = `https://wa.me/917620085558?text=${message}`;
+        }
+
+        window.addToCart = function(id) {
+            cart[id] = (cart[id] || 0) + 1;
+            renderCart();
+        };
+
+        window.updateQty = function(id, delta) {
+            cart[id] += delta;
+            if (cart[id] <= 0) {
+                delete cart[id];
+            }
+            renderCart();
+        };
+
+        // Category filter buttons
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                renderCatalog(btn.dataset.cat);
+            });
+        });
+
+        // Initialize
+        renderCatalog();
+        renderCart();
+    </script>
+</body>
+</html>

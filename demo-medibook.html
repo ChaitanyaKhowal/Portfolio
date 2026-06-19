@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediBook — Clinic Appointment Booking System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284C7; /* Calm Sky Blue */
+            --primary-light: rgba(2, 132, 199, 0.1);
+            --success: #059669; /* Soft Emerald */
+            --success-light: rgba(5, 150, 105, 0.1);
+            --bg-light: #F8FAFC;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --card-bg: #FFFFFF;
+            --r-md: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 16px 6vw;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .badge-live {
+            background: var(--success-light);
+            border: 1px solid var(--success);
+            color: var(--success);
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 10px 20px;
+            border-radius: var(--r-md);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px 4vw 60px;
+        }
+
+        /* Views */
+        .view-panel {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+
+        .view-panel.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 14.5px;
+            margin-bottom: 32px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            text-align: left;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            font-size: 14.5px;
+            outline: none;
+            font-family: inherit;
+            background: #fff;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            width: 100%;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            background: #0369a1;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+        }
+
+        /* Success Card */
+        .success-container {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--success-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--success);
+            font-size: 28px;
+            margin: 0 auto 20px;
+        }
+
+        .success-details {
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            background: var(--bg-light);
+            padding: 24px;
+            max-width: 480px;
+            margin: 24px auto;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed var(--border);
+            font-size: 14.5px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .detail-val {
+            font-weight: 600;
+        }
+
+        /* Dashboard Appointments Table */
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+
+        .dashboard-table th, 
+        .dashboard-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dashboard-table th {
+            background: var(--bg-light);
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-badge.confirmed {
+            background: var(--success-light);
+            color: var(--success);
+        }
+
+        .status-badge.pending {
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        @media (max-width: 680px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .view-panel {
+                padding: 24px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fas fa-heart-pulse"></i> Medi<span>Book</span></div>
+        <div style="display:flex; align-items:center; gap:12px;">
+            <span class="badge-live"><i class="fas fa-server"></i> Java + MySQL Simulator</span>
+            <a href="index.html" class="btn" style="padding: 6px 12px; font-size: 12px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; color: var(--text-dark); background: white;">
+                <i class="fas fa-arrow-left"></i> Back
+            </a>
+        </div>
+    </header>
+
+    <div class="tabs-header">
+        <button class="tab-btn active" id="tabPatient"><i class="fas fa-user-injured"></i> Patient Booking Form</button>
+        <button class="tab-btn" id="tabAdmin"><i class="fas fa-chart-line"></i> Admin Dashboard View</button>
+    </div>
+
+    <div class="container">
+
+        <!-- PATIENT BOOKING PANEL -->
+        <div class="view-panel active" id="patientPanel">
+            <h2>Book a Consultation</h2>
+            <p class="section-desc">Schedule appointments with specialized doctors. Instantly search available slots.</p>
+
+            <form id="bookingForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="pName">Patient Full Name</label>
+                        <input type="text" id="pName" placeholder="Enter patient name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pPhone">Contact Phone Number</label>
+                        <input type="tel" id="pPhone" placeholder="e.g. +91 9876543210" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pDoctor">Select Doctor & Specialty</label>
+                        <select id="pDoctor">
+                            <option value="Dr. Rohan Sharma (Cardiology)">Dr. Rohan Sharma — Cardiology</option>
+                            <option value="Dr. Sneha Patil (Pediatrics)" selected>Dr. Sneha Patil — Pediatrics</option>
+                            <option value="Dr. Amit Verma (General Medicine)">Dr. Amit Verma — General Medicine</option>
+                            <option value="Dr. Priya Nair (Dermatology)">Dr. Priya Nair — Dermatology</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pDate">Appointment Date</label>
+                        <input type="date" id="pDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pSlot">Preferred Time Slot</label>
+                        <select id="pSlot">
+                            <option value="10:00 AM - 10:30 AM">10:00 AM - 10:30 AM</option>
+                            <option value="11:30 AM - 12:00 PM">11:30 AM - 12:00 PM</option>
+                            <option value="02:00 PM - 02:30 PM" selected>02:00 PM - 02:30 PM</option>
+                            <option value="04:30 PM - 05:00 PM">04:30 PM - 05:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="pReason">Reason for Appointment (optional)</label>
+                        <textarea id="pReason" rows="3" placeholder="Describe symptoms or purpose..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <i class="fas fa-check-circle"></i> Confirm & Book Slot
+                </button>
+            </form>
+        </div>
+
+        <!-- SUCCESS STATE -->
+        <div class="view-panel success-container" id="successPanel">
+            <div class="success-icon"><i class="fas fa-check-double"></i></div>
+            <h2>Appointment Confirmed!</h2>
+            <p style="color:var(--text-muted)">Your records have been saved to the database. Email notification has been simulated.</p>
+
+            <div class="success-details">
+                <div class="detail-row">
+                    <span class="detail-label">Booking Reference:</span>
+                    <span class="detail-val" id="refId">MB-3819</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Patient Name:</span>
+                    <span class="detail-val" id="refName">John Doe</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Doctor Assigned:</span>
+                    <span class="detail-val" id="refDoc">Dr. Sneha Patil</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Date & Time:</span>
+                    <span class="detail-val" id="refTime">Oct 14, 2026 - 11:30 AM</span>
+                </div>
+            </div>
+
+            <button class="btn-submit" id="newBookingBtn" style="max-width:280px; margin:0 auto;">
+                <i class="fas fa-plus"></i> Book Another Appointment
+            </button>
+        </div>
+
+        <!-- ADMIN DASHBOARD PANEL -->
+        <div class="view-panel" id="adminPanel">
+            <h2>Appointments Registrar Dashboard</h2>
+            <p class="section-desc">MySQL database status: Online. Showing active scheduled slots.</p>
+
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Patient</th>
+                        <th>Doctor</th>
+                        <th>Date</th>
+                        <th>Slot</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="adminTableBody">
+                    <tr>
+                        <td>MB-104</td>
+                        <td>Rahul Deshmukh</td>
+                        <td>Dr. Rohan Sharma (Cardio)</td>
+                        <td>2026-06-21</td>
+                        <td>10:00 AM</td>
+                        <td><span class="status-badge confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr>
+                        <td>MB-103</td>
+                        <td>Anjali Gupta</td>
+                        <td>Dr. Priya Nair (Derma)</td>
+                        <td>2026-06-21</td>
+                        <td>11:30 AM</td>
+                        <td><span class="status-badge confirmed">Confirmed</span></td>
+                    </tr>
+                    <tr>
+                        <td>MB-102</td>
+                        <td>Vikram Singh</td>
+                        <td>Dr. Amit Verma (General)</td>
+                        <td>2026-06-22</td>
+                        <td>02:00 PM</td>
+                        <td><span class="status-badge pending">Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        const tabPatient = document.getElementById("tabPatient");
+        const tabAdmin = document.getElementById("tabAdmin");
+        
+        const patientPanel = document.getElementById("patientPanel");
+        const adminPanel = document.getElementById("adminPanel");
+        const successPanel = document.getElementById("successPanel");
+
+        const bookingForm = document.getElementById("bookingForm");
+        const newBookingBtn = document.getElementById("newBookingBtn");
+        const adminTableBody = document.getElementById("adminTableBody");
+
+        // Seed current date for date picker
+        const dateInput = document.getElementById("pDate");
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+        dateInput.min = new Date().toISOString().split('T')[0];
+
+        // Database mock records array
+        const mockDb = [
+            { id: "MB-104", name: "Rahul Deshmukh", doctor: "Dr. Rohan Sharma (Cardiology)", date: "2026-06-21", slot: "10:00 AM - 10:30 AM", status: "Confirmed" },
+            { id: "MB-103", name: "Anjali Gupta", doctor: "Dr. Priya Nair (Dermatology)", date: "2026-06-21", slot: "11:30 AM - 12:00 PM", status: "Confirmed" },
+            { id: "MB-102", name: "Vikram Singh", doctor: "Dr. Amit Verma (General Medicine)", date: "2026-06-22", slot: "02:00 PM - 02:30 PM", status: "Pending" }
+        ];
+
+        // Tab switches
+        tabPatient.addEventListener("click", () => {
+            tabPatient.classList.add("active");
+            tabAdmin.classList.remove("active");
+            
+            if (successPanel.style.display === "block") {
+                successPanel.style.display = "block";
+                patientPanel.classList.remove("active");
+            } else {
+                patientPanel.classList.add("active");
+            }
+            adminPanel.classList.remove("active");
+        });
+
+        tabAdmin.addEventListener("click", () => {
+            tabAdmin.classList.add("active");
+            tabPatient.classList.remove("active");
+            
+            patientPanel.classList.remove("active");
+            successPanel.style.display = "none";
+            adminPanel.classList.add("active");
+
+            // Re-render table rows
+            renderTable();
+        });
+
+        function renderTable() {
+            adminTableBody.innerHTML = mockDb.map(row => `
+                <tr>
+                    <td>${row.id}</td>
+                    <td>${row.name}</td>
+                    <td>${row.doctor}</td>
+                    <td>${row.date}</td>
+                    <td>${row.slot.split(" ")[0]}</td>
+                    <td><span class="status-badge ${row.status.toLowerCase()}">${row.status}</span></td>
+                </tr>
+            `).join("");
+        }
+
+        // Form Submit Handler
+        bookingForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("pName").value;
+            const phone = document.getElementById("pPhone").value;
+            const doctor = document.getElementById("pDoctor").value;
+            const date = document.getElementById("pDate").value;
+            const slot = document.getElementById("pSlot").value;
+
+            // Generate mock ID
+            const newId = "MB-" + Math.floor(100 + Math.random() * 900);
+
+            // Save to mock database
+            mockDb.unshift({ id: newId, name, doctor, date, slot, status: "Confirmed" });
+
+            // Display success info
+            document.getElementById("refId").textContent = newId;
+            document.getElementById("refName").textContent = name;
+            document.getElementById("refDoc").textContent = doctor;
+            document.getElementById("refTime").textContent = `${date} at ${slot.split(" - ")[0]}`;
+
+            // Switch to success view
+            patientPanel.classList.remove("active");
+            successPanel.style.display = "block";
+        });
+
+        newBookingBtn.addEventListener("click", () => {
+            bookingForm.reset();
+            successPanel.style.display = "none";
+            patientPanel.classList.add("active");
+            // reset tomorrow default date
+            dateInput.value = tomorrow.toISOString().split('T')[0];
+        });
+    </script>
+</body>
+</html>
