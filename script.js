@@ -441,10 +441,11 @@ function executeCommand(cmd) {
         case "projects":
             outputHTML = `
                 <span class="tl"><span class="tv">Active Showcases:</span></span>
-                <span class="tl">1. <span class="tk">The Heaven Palace</span> - Premium Restaurant Website (Live)</span>
-                <span class="tl">2. <span class="tk">FitForge Gym</span> - Ad Landing Page with Lead Forms (Demo Active)</span>
-                <span class="tl">3. <span class="tk">MediBook</span> - Clinical Dashboard & Scheduler (Demo Active)</span>
-                <span class="tl">4. <span class="tk">SpiceRoute</span> - Catalog Store with WhatsApp Orders (Demo Active)</span>
+                <span class="tl">1. <span class="tk">IT Guy Biryani</span> - Premium Restaurant Website (Live)</span>
+                <span class="tl">2. <span class="tk">The Heaven Palace</span> - Premium Restaurant Website (Live)</span>
+                <span class="tl">3. <span class="tk">FitForge Gym</span> - Ad Landing Page with Lead Forms (Demo Active)</span>
+                <span class="tl">4. <span class="tk">MediBook</span> - Clinical Dashboard & Scheduler (Demo Active)</span>
+                <span class="tl">5. <span class="tk">SpiceRoute</span> - Catalog Store with WhatsApp Orders (Demo Active)</span>
             `;
             break;
         case "contact":
